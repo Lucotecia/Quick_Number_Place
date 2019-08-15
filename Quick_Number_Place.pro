@@ -25,13 +25,16 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+        cell.cpp \
         main.cpp \
         mainwindow.cpp
 
 HEADERS += \
+        cell.h \
         mainwindow.h
 
 FORMS += \
+        cell.ui \
         mainwindow.ui
 
 # Default rules for deployment.
