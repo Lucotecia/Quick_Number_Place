@@ -44,6 +44,9 @@
    <number>3</number>
   </property>
   <widget class="QLabel" name="label">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>1</x>
@@ -74,6 +77,9 @@
     <font>
      <pointsize>48</pointsize>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:blue;</string>
    </property>
    <property name="text">
     <string>0</string>
@@ -110,7 +116,7 @@
     </size>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color:white;</string>
+    <string notr="true">background-color:#cceeff;color:blue;</string>
    </property>
    <layout class="QGridLayout" name="gridLayout">
     <property name="leftMargin">
@@ -148,6 +154,13 @@
         <height>20</height>
        </size>
       </property>
+      <property name="font">
+       <font>
+        <family>Meiryo UI</family>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
       <property name="text">
        <string>1</string>
       </property>
@@ -175,6 +188,13 @@
         <width>20</width>
         <height>20</height>
        </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>Meiryo UI</family>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
       </property>
       <property name="text">
        <string>5</string>
@@ -204,6 +224,13 @@
         <height>20</height>
        </size>
       </property>
+      <property name="font">
+       <font>
+        <family>Meiryo UI</family>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
       <property name="text">
        <string>6</string>
       </property>
@@ -231,6 +258,13 @@
         <width>20</width>
         <height>20</height>
        </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>Meiryo UI</family>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
       </property>
       <property name="text">
        <string>2</string>
@@ -260,6 +294,13 @@
         <height>20</height>
        </size>
       </property>
+      <property name="font">
+       <font>
+        <family>Meiryo UI</family>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
       <property name="text">
        <string>4</string>
       </property>
@@ -287,6 +328,13 @@
         <width>20</width>
         <height>20</height>
        </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>Meiryo UI</family>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
       </property>
       <property name="text">
        <string>3</string>
@@ -316,6 +364,13 @@
         <height>20</height>
        </size>
       </property>
+      <property name="font">
+       <font>
+        <family>Meiryo UI</family>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
       <property name="text">
        <string>7</string>
       </property>
@@ -344,6 +399,13 @@
         <height>20</height>
        </size>
       </property>
+      <property name="font">
+       <font>
+        <family>Meiryo UI</family>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
       <property name="text">
        <string>8</string>
       </property>
@@ -371,6 +433,13 @@
         <width>20</width>
         <height>20</height>
        </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>Meiryo UI</family>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
       </property>
       <property name="text">
        <string>9</string>
@@ -408,6 +477,13 @@
      <width>62</width>
      <height>62</height>
     </size>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS UI Gothic</family>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
    </property>
    <property name="frameShape">
     <enum>QFrame::Box</enum>
