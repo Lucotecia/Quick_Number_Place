@@ -41,7 +41,7 @@
    <enum>QFrame::Plain</enum>
   </property>
   <property name="lineWidth">
-   <number>3</number>
+   <number>1</number>
   </property>
   <widget class="QLabel" name="label">
    <property name="enabled">
@@ -75,20 +75,23 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>48</pointsize>
+     <pointsize>36</pointsize>
     </font>
    </property>
    <property name="styleSheet">
     <string notr="true">color:blue;</string>
    </property>
    <property name="text">
-    <string>0</string>
+    <string>2</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QWidget" name="widget" native="true">
+  <widget class="QWidget" name="background" native="true">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>1</x>
@@ -115,8 +118,11 @@
      <height>60</height>
     </size>
    </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
    <property name="styleSheet">
-    <string notr="true">background-color:#cceeff;color:blue;</string>
+    <string notr="true">color:blue;background-color:white</string>
    </property>
    <layout class="QGridLayout" name="gridLayout">
     <property name="leftMargin">
@@ -136,6 +142,9 @@
     </property>
     <item row="0" column="0">
      <widget class="QLabel" name="memo1">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
       <property name="sizePolicy">
        <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
         <horstretch>0</horstretch>
@@ -162,7 +171,7 @@
        </font>
       </property>
       <property name="text">
-       <string>1</string>
+       <string/>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -197,7 +206,7 @@
        </font>
       </property>
       <property name="text">
-       <string>5</string>
+       <string/>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -232,7 +241,7 @@
        </font>
       </property>
       <property name="text">
-       <string>6</string>
+       <string/>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -241,6 +250,9 @@
     </item>
     <item row="0" column="1">
      <widget class="QLabel" name="memo2">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
       <property name="sizePolicy">
        <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
         <horstretch>0</horstretch>
@@ -267,7 +279,7 @@
        </font>
       </property>
       <property name="text">
-       <string>2</string>
+       <string/>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -276,6 +288,9 @@
     </item>
     <item row="1" column="0">
      <widget class="QLabel" name="memo4">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
       <property name="sizePolicy">
        <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
         <horstretch>0</horstretch>
@@ -302,7 +317,7 @@
        </font>
       </property>
       <property name="text">
-       <string>4</string>
+       <string/>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -311,6 +326,9 @@
     </item>
     <item row="0" column="2">
      <widget class="QLabel" name="memo3">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
       <property name="sizePolicy">
        <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
         <horstretch>0</horstretch>
@@ -337,7 +355,7 @@
        </font>
       </property>
       <property name="text">
-       <string>3</string>
+       <string/>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -372,7 +390,7 @@
        </font>
       </property>
       <property name="text">
-       <string>7</string>
+       <string/>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -407,7 +425,7 @@
        </font>
       </property>
       <property name="text">
-       <string>8</string>
+       <string/>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -442,7 +460,7 @@
        </font>
       </property>
       <property name="text">
-       <string>9</string>
+       <string/>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -451,7 +469,7 @@
     </item>
    </layout>
   </widget>
-  <widget class="QFrame" name="frame">
+  <widget class="QFrame" name="cellframe">
    <property name="geometry">
     <rect>
      <x>0</x>
@@ -491,10 +509,13 @@
    <property name="frameShadow">
     <enum>QFrame::Plain</enum>
    </property>
+   <property name="lineWidth">
+    <number>1</number>
+   </property>
   </widget>
-  <zorder>widget</zorder>
+  <zorder>background</zorder>
   <zorder>label</zorder>
-  <zorder>frame</zorder>
+  <zorder>cellframe</zorder>
  </widget>
  <resources/>
  <connections/>

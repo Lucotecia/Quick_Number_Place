@@ -2,6 +2,7 @@
 #define CELL_H
 
 #include <QFrame>
+#include <QMouseEvent>
 
 namespace Ui {
 class Cell;
@@ -14,6 +15,8 @@ class Cell : public QFrame
 public:
     explicit Cell(QWidget *parent = nullptr);
     ~Cell();
+    void mark(bool);
+    void select(bool);
 
 private:
     Ui::Cell *ui;

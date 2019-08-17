@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QFrame" name="board">
     <property name="geometry">
@@ -44,7 +47,7 @@
     <property name="lineWidth">
      <number>3</number>
     </property>
-    <layout class="QGridLayout" name="gridLayout_10">
+    <layout class="QGridLayout" name="gridLayout">
      <property name="leftMargin">
       <number>0</number>
      </property>
@@ -61,7 +64,7 @@
       <number>0</number>
      </property>
      <item row="1" column="0">
-      <widget class="QFrame" name="block00_4">
+      <widget class="QFrame" name="block4">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
          <horstretch>0</horstretch>
@@ -106,7 +109,7 @@
          <number>0</number>
         </property>
         <item row="1" column="0">
-         <widget class="Cell" name="cell4_4">
+         <widget class="Cell" name="cell44">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -116,7 +119,7 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="Cell" name="cell2_4">
+         <widget class="Cell" name="cell42">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -126,7 +129,7 @@
          </widget>
         </item>
         <item row="0" column="0">
-         <widget class="Cell" name="cell1_4">
+         <widget class="Cell" name="cell41">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -136,7 +139,7 @@
          </widget>
         </item>
         <item row="0" column="2">
-         <widget class="Cell" name="cell3_4">
+         <widget class="Cell" name="cell43">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -146,7 +149,7 @@
          </widget>
         </item>
         <item row="2" column="0">
-         <widget class="Cell" name="cell7_4">
+         <widget class="Cell" name="cell47">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -156,7 +159,7 @@
          </widget>
         </item>
         <item row="1" column="1">
-         <widget class="Cell" name="cell5_4">
+         <widget class="Cell" name="cell45">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -166,7 +169,7 @@
          </widget>
         </item>
         <item row="1" column="2">
-         <widget class="Cell" name="cell6_4">
+         <widget class="Cell" name="cell46">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -176,7 +179,7 @@
          </widget>
         </item>
         <item row="2" column="1">
-         <widget class="Cell" name="cell8_4">
+         <widget class="Cell" name="cell48">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -186,7 +189,7 @@
          </widget>
         </item>
         <item row="2" column="2">
-         <widget class="Cell" name="cell9_4">
+         <widget class="Cell" name="cell49">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -199,7 +202,7 @@
       </widget>
      </item>
      <item row="1" column="2">
-      <widget class="QFrame" name="block00_6">
+      <widget class="QFrame" name="block6">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
          <horstretch>0</horstretch>
@@ -244,7 +247,7 @@
          <number>0</number>
         </property>
         <item row="1" column="0">
-         <widget class="Cell" name="cell4_6">
+         <widget class="Cell" name="cell64">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -254,7 +257,7 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="Cell" name="cell2_6">
+         <widget class="Cell" name="cell62">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -264,7 +267,7 @@
          </widget>
         </item>
         <item row="0" column="0">
-         <widget class="Cell" name="cell1_6">
+         <widget class="Cell" name="cell61">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -274,7 +277,7 @@
          </widget>
         </item>
         <item row="0" column="2">
-         <widget class="Cell" name="cell3_6">
+         <widget class="Cell" name="cell63">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -284,7 +287,7 @@
          </widget>
         </item>
         <item row="2" column="0">
-         <widget class="Cell" name="cell7_6">
+         <widget class="Cell" name="cell67">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -294,7 +297,7 @@
          </widget>
         </item>
         <item row="1" column="1">
-         <widget class="Cell" name="cell5_6">
+         <widget class="Cell" name="cell65">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -304,7 +307,7 @@
          </widget>
         </item>
         <item row="1" column="2">
-         <widget class="Cell" name="cell6_6">
+         <widget class="Cell" name="cell66">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -314,7 +317,7 @@
          </widget>
         </item>
         <item row="2" column="1">
-         <widget class="Cell" name="cell8_6">
+         <widget class="Cell" name="cell68">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -324,7 +327,7 @@
          </widget>
         </item>
         <item row="2" column="2">
-         <widget class="Cell" name="cell9_6">
+         <widget class="Cell" name="cell69">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -337,7 +340,7 @@
       </widget>
      </item>
      <item row="0" column="1">
-      <widget class="QFrame" name="block00_2">
+      <widget class="QFrame" name="block2">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
          <horstretch>0</horstretch>
@@ -382,7 +385,7 @@
          <number>0</number>
         </property>
         <item row="1" column="0">
-         <widget class="Cell" name="cell4_2">
+         <widget class="Cell" name="cell24">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -392,7 +395,7 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="Cell" name="cell2_2">
+         <widget class="Cell" name="cell22">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -402,7 +405,7 @@
          </widget>
         </item>
         <item row="0" column="0">
-         <widget class="Cell" name="cell1_2">
+         <widget class="Cell" name="cell21">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -412,7 +415,7 @@
          </widget>
         </item>
         <item row="0" column="2">
-         <widget class="Cell" name="cell3_2">
+         <widget class="Cell" name="cell23">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -422,7 +425,7 @@
          </widget>
         </item>
         <item row="2" column="0">
-         <widget class="Cell" name="cell7_2">
+         <widget class="Cell" name="cell27">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -432,7 +435,7 @@
          </widget>
         </item>
         <item row="1" column="1">
-         <widget class="Cell" name="cell5_2">
+         <widget class="Cell" name="cell25">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -442,7 +445,7 @@
          </widget>
         </item>
         <item row="1" column="2">
-         <widget class="Cell" name="cell6_2">
+         <widget class="Cell" name="cell26">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -452,7 +455,7 @@
          </widget>
         </item>
         <item row="2" column="1">
-         <widget class="Cell" name="cell8_2">
+         <widget class="Cell" name="cell28">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -462,7 +465,7 @@
          </widget>
         </item>
         <item row="2" column="2">
-         <widget class="Cell" name="cell9_2">
+         <widget class="Cell" name="cell29">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -475,7 +478,7 @@
       </widget>
      </item>
      <item row="1" column="1">
-      <widget class="QFrame" name="block00_5">
+      <widget class="QFrame" name="block5">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
          <horstretch>0</horstretch>
@@ -520,7 +523,7 @@
          <number>0</number>
         </property>
         <item row="1" column="0">
-         <widget class="Cell" name="cell4_5">
+         <widget class="Cell" name="cell54">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -530,7 +533,7 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="Cell" name="cell2_5">
+         <widget class="Cell" name="cell52">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -540,7 +543,7 @@
          </widget>
         </item>
         <item row="0" column="0">
-         <widget class="Cell" name="cell1_5">
+         <widget class="Cell" name="cell51">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -550,7 +553,7 @@
          </widget>
         </item>
         <item row="0" column="2">
-         <widget class="Cell" name="cell3_5">
+         <widget class="Cell" name="cell53">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -560,7 +563,7 @@
          </widget>
         </item>
         <item row="2" column="0">
-         <widget class="Cell" name="cell7_5">
+         <widget class="Cell" name="cell57">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -570,7 +573,7 @@
          </widget>
         </item>
         <item row="1" column="1">
-         <widget class="Cell" name="cell5_5">
+         <widget class="Cell" name="cell55">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -580,7 +583,7 @@
          </widget>
         </item>
         <item row="1" column="2">
-         <widget class="Cell" name="cell6_5">
+         <widget class="Cell" name="cell56">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -590,7 +593,7 @@
          </widget>
         </item>
         <item row="2" column="1">
-         <widget class="Cell" name="cell8_5">
+         <widget class="Cell" name="cell58">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -600,7 +603,7 @@
          </widget>
         </item>
         <item row="2" column="2">
-         <widget class="Cell" name="cell9_5">
+         <widget class="Cell" name="cell59">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -613,7 +616,7 @@
       </widget>
      </item>
      <item row="0" column="0">
-      <widget class="QFrame" name="block00">
+      <widget class="QFrame" name="block1">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
          <horstretch>0</horstretch>
@@ -641,7 +644,7 @@
        <property name="lineWidth">
         <number>2</number>
        </property>
-       <layout class="QGridLayout" name="gridLayout">
+       <layout class="QGridLayout" name="gridLayout_1">
         <property name="leftMargin">
          <number>0</number>
         </property>
@@ -658,7 +661,7 @@
          <number>0</number>
         </property>
         <item row="1" column="0">
-         <widget class="Cell" name="cell4">
+         <widget class="Cell" name="cell14">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -668,7 +671,7 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="Cell" name="cell2">
+         <widget class="Cell" name="cell12">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -678,7 +681,7 @@
          </widget>
         </item>
         <item row="0" column="0">
-         <widget class="Cell" name="cell1">
+         <widget class="Cell" name="cell11">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -688,7 +691,7 @@
          </widget>
         </item>
         <item row="0" column="2">
-         <widget class="Cell" name="cell3">
+         <widget class="Cell" name="cell13">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -698,7 +701,7 @@
          </widget>
         </item>
         <item row="2" column="0">
-         <widget class="Cell" name="cell7">
+         <widget class="Cell" name="cell17">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -708,7 +711,7 @@
          </widget>
         </item>
         <item row="1" column="1">
-         <widget class="Cell" name="cell5">
+         <widget class="Cell" name="cell15">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -718,7 +721,7 @@
          </widget>
         </item>
         <item row="1" column="2">
-         <widget class="Cell" name="cell6">
+         <widget class="Cell" name="cell16">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -728,7 +731,7 @@
          </widget>
         </item>
         <item row="2" column="1">
-         <widget class="Cell" name="cell8">
+         <widget class="Cell" name="cell18">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -738,7 +741,7 @@
          </widget>
         </item>
         <item row="2" column="2">
-         <widget class="Cell" name="cell9">
+         <widget class="Cell" name="cell19">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -748,10 +751,19 @@
          </widget>
         </item>
        </layout>
+       <zorder>cell14</zorder>
+       <zorder>cell12</zorder>
+       <zorder>cell13</zorder>
+       <zorder>cell17</zorder>
+       <zorder>cell15</zorder>
+       <zorder>cell16</zorder>
+       <zorder>cell18</zorder>
+       <zorder>cell19</zorder>
+       <zorder>cell11</zorder>
       </widget>
      </item>
      <item row="0" column="2">
-      <widget class="QFrame" name="block00_3">
+      <widget class="QFrame" name="block3">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
          <horstretch>0</horstretch>
@@ -796,7 +808,7 @@
          <number>0</number>
         </property>
         <item row="1" column="0">
-         <widget class="Cell" name="cell4_3">
+         <widget class="Cell" name="cell34">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -806,7 +818,7 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="Cell" name="cell2_3">
+         <widget class="Cell" name="cell32">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -816,7 +828,7 @@
          </widget>
         </item>
         <item row="0" column="0">
-         <widget class="Cell" name="cell1_3">
+         <widget class="Cell" name="cell31">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -826,7 +838,7 @@
          </widget>
         </item>
         <item row="0" column="2">
-         <widget class="Cell" name="cell3_3">
+         <widget class="Cell" name="cell33">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -836,7 +848,7 @@
          </widget>
         </item>
         <item row="2" column="0">
-         <widget class="Cell" name="cell7_3">
+         <widget class="Cell" name="cell37">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -846,7 +858,7 @@
          </widget>
         </item>
         <item row="1" column="1">
-         <widget class="Cell" name="cell5_3">
+         <widget class="Cell" name="cell35">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -856,7 +868,7 @@
          </widget>
         </item>
         <item row="1" column="2">
-         <widget class="Cell" name="cell6_3">
+         <widget class="Cell" name="cell36">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -866,7 +878,7 @@
          </widget>
         </item>
         <item row="2" column="1">
-         <widget class="Cell" name="cell8_3">
+         <widget class="Cell" name="cell38">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -876,7 +888,7 @@
          </widget>
         </item>
         <item row="2" column="2">
-         <widget class="Cell" name="cell9_3">
+         <widget class="Cell" name="cell39">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -889,7 +901,7 @@
       </widget>
      </item>
      <item row="2" column="2">
-      <widget class="QFrame" name="block00_9">
+      <widget class="QFrame" name="block9">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
          <horstretch>0</horstretch>
@@ -934,7 +946,7 @@
          <number>0</number>
         </property>
         <item row="1" column="0">
-         <widget class="Cell" name="cell4_9">
+         <widget class="Cell" name="cell94">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -944,7 +956,7 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="Cell" name="cell2_9">
+         <widget class="Cell" name="cell92">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -954,7 +966,7 @@
          </widget>
         </item>
         <item row="0" column="0">
-         <widget class="Cell" name="cell1_9">
+         <widget class="Cell" name="cell91">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -964,7 +976,7 @@
          </widget>
         </item>
         <item row="0" column="2">
-         <widget class="Cell" name="cell3_9">
+         <widget class="Cell" name="cell93">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -974,7 +986,7 @@
          </widget>
         </item>
         <item row="2" column="0">
-         <widget class="Cell" name="cell7_9">
+         <widget class="Cell" name="cell97">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -984,7 +996,7 @@
          </widget>
         </item>
         <item row="1" column="1">
-         <widget class="Cell" name="cell5_9">
+         <widget class="Cell" name="cell95">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -994,7 +1006,7 @@
          </widget>
         </item>
         <item row="1" column="2">
-         <widget class="Cell" name="cell6_9">
+         <widget class="Cell" name="cell96">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -1004,7 +1016,7 @@
          </widget>
         </item>
         <item row="2" column="1">
-         <widget class="Cell" name="cell8_9">
+         <widget class="Cell" name="cell98">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -1014,7 +1026,7 @@
          </widget>
         </item>
         <item row="2" column="2">
-         <widget class="Cell" name="cell9_9">
+         <widget class="Cell" name="cell99">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -1027,7 +1039,7 @@
       </widget>
      </item>
      <item row="2" column="0">
-      <widget class="QFrame" name="block00_7">
+      <widget class="QFrame" name="block7">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
          <horstretch>0</horstretch>
@@ -1072,7 +1084,7 @@
          <number>0</number>
         </property>
         <item row="1" column="0">
-         <widget class="Cell" name="cell4_7">
+         <widget class="Cell" name="cell74">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -1082,7 +1094,7 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="Cell" name="cell2_7">
+         <widget class="Cell" name="cell72">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -1092,7 +1104,7 @@
          </widget>
         </item>
         <item row="0" column="0">
-         <widget class="Cell" name="cell1_7">
+         <widget class="Cell" name="cell71">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -1102,7 +1114,7 @@
          </widget>
         </item>
         <item row="0" column="2">
-         <widget class="Cell" name="cell3_7">
+         <widget class="Cell" name="cell73">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -1112,7 +1124,7 @@
          </widget>
         </item>
         <item row="2" column="0">
-         <widget class="Cell" name="cell7_7">
+         <widget class="Cell" name="cell77">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -1122,7 +1134,7 @@
          </widget>
         </item>
         <item row="1" column="1">
-         <widget class="Cell" name="cell5_7">
+         <widget class="Cell" name="cell75">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -1132,7 +1144,7 @@
          </widget>
         </item>
         <item row="1" column="2">
-         <widget class="Cell" name="cell6_7">
+         <widget class="Cell" name="cell76">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -1142,7 +1154,7 @@
          </widget>
         </item>
         <item row="2" column="1">
-         <widget class="Cell" name="cell8_7">
+         <widget class="Cell" name="cell78">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -1152,7 +1164,7 @@
          </widget>
         </item>
         <item row="2" column="2">
-         <widget class="Cell" name="cell9_7">
+         <widget class="Cell" name="cell79">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -1165,7 +1177,7 @@
       </widget>
      </item>
      <item row="2" column="1">
-      <widget class="QFrame" name="block00_8">
+      <widget class="QFrame" name="block8">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
          <horstretch>0</horstretch>
@@ -1210,7 +1222,7 @@
          <number>0</number>
         </property>
         <item row="1" column="0">
-         <widget class="Cell" name="cell4_8">
+         <widget class="Cell" name="cell84">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -1220,7 +1232,7 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="Cell" name="cell2_8">
+         <widget class="Cell" name="cell82">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -1230,7 +1242,7 @@
          </widget>
         </item>
         <item row="0" column="0">
-         <widget class="Cell" name="cell1_8">
+         <widget class="Cell" name="cell81">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -1240,7 +1252,7 @@
          </widget>
         </item>
         <item row="0" column="2">
-         <widget class="Cell" name="cell3_8">
+         <widget class="Cell" name="cell83">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -1250,7 +1262,7 @@
          </widget>
         </item>
         <item row="2" column="0">
-         <widget class="Cell" name="cell7_8">
+         <widget class="Cell" name="cell87">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -1260,7 +1272,7 @@
          </widget>
         </item>
         <item row="1" column="1">
-         <widget class="Cell" name="cell5_8">
+         <widget class="Cell" name="cell85">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -1270,7 +1282,7 @@
          </widget>
         </item>
         <item row="1" column="2">
-         <widget class="Cell" name="cell6_8">
+         <widget class="Cell" name="cell86">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -1280,7 +1292,7 @@
          </widget>
         </item>
         <item row="2" column="1">
-         <widget class="Cell" name="cell8_8">
+         <widget class="Cell" name="cell88">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -1290,7 +1302,7 @@
          </widget>
         </item>
         <item row="2" column="2">
-         <widget class="Cell" name="cell9_8">
+         <widget class="Cell" name="cell89">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
