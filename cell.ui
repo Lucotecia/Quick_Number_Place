@@ -82,7 +82,7 @@
     <string notr="true">color:blue;</string>
    </property>
    <property name="text">
-    <string>2</string>
+    <string/>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>

@@ -26,12 +26,16 @@ CONFIG += c++11
 
 SOURCES += \
         cell.cpp \
+        displayboard.cpp \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+        npgenerator.cpp
 
 HEADERS += \
         cell.h \
-        mainwindow.h
+        displayboard.h \
+        mainwindow.h \
+        npgenerator.h
 
 FORMS += \
         cell.ui \

@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "ui_cell.h"
 #include <QDebug>
+#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -46,15 +47,20 @@ bool MainWindow::eventFilter(QObject *target,QEvent *event){
                 if(assist){
                     //assistがtrueのとき、重複がないcellを全て水色に
                     QChar target_block = target->objectName().at(4);
-                    int target_subidx = target->objectName().at(5).digitValue();
-                    int target_block_number = target_block.digitValue();
+                    int target_subidx = target->objectName().at(5).digitValue()-1;//0-based
+                    int target_block_number = target_block.digitValue()-1;//0-based
+                    QString target_text = static_cast<Cell *>(target)->getText();
                     for(int i=0;i<all_cells.size();i++){
-                        auto cell = all_cells.at(i);
+                        Cell *cell = all_cells.at(i);
                         QChar block = cell->objectName().at(4);
-                        int subidx = cell->objectName().at(5).digitValue();
-                        int blocknumber = block.digitValue();
-                        if(target_block==block||((target_block_number-1)/3==(blocknumber-1)/3 && (target_subidx-1)/3==(subidx-1)/3)||(target_block_number%3==blocknumber%3 && target_subidx%3==subidx%3)){//同じブロック
+                        int subidx = cell->objectName().at(5).digitValue()-1;//0-based
+                        int blocknumber = block.digitValue()-1;//0-based
+                        QString text = cell->getText();
+                        if(target_block==block||(target_block_number/3==blocknumber/3 && target_subidx/3==subidx/3)||(target_block_number%3==blocknumber%3 && target_subidx%3==subidx%3)){//同じブロックor同じ行or同じ列
                             cell->mark(true);
+                        }
+                        if(target_text!="" && target_text==text){
+                            cell->mark(true, "#DDDDDD");
                         }
                     }
                 }
@@ -64,4 +70,29 @@ bool MainWindow::eventFilter(QObject *target,QEvent *event){
         }
     }
     return false;
+}
+
+void MainWindow::view_problem(QString problem, QString answer){
+    correct_answer = answer;
+    qDebug() << problem;
+    qDebug() << answer;
+    for(int i=0;i<all_cells.size();i++){
+        Cell *cell = all_cells.at(i);
+        int block_number = cell->objectName().at(4).digitValue()-1;//0-based
+        int subidx = cell->objectName().at(5).digitValue()-1;//0-based
+        QString number_str = QString(problem[(block_number/3)*27+(subidx/3)*9+(block_number%3)*3+subidx%3]);
+        if(number_str=="0"){
+            number_str="";
+            cell->fix(false);
+        }else{
+            cell->fix(true);
+        }
+        cell->setText(number_str);
+    }
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    hint = ui->hint_combobox->currentText().toInt();
+    emit make_board(hint);
 }
