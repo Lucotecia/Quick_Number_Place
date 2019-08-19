@@ -16,7 +16,7 @@ public:
     explicit Cell(QWidget *parent = nullptr);
     ~Cell();
     void mark(bool,QString color_name = "#CCEEFF");
-    void select(bool);
+    void mark_frame(bool);
     void setText(QString);
     void fix(bool);
     QString getText();

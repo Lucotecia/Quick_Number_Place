@@ -1,4 +1,5 @@
 ﻿#include "npgenerator.h"
+#include <QMessageBox>
 
 NPGenerator::NPGenerator(int r,QObject *parent) :
     QObject(parent),
@@ -58,6 +59,15 @@ void NPGenerator::eliminate(int* board, const int index, const int n){
     int x = index%9, y = index/9;
     int i, xo = (x/3)*3, yo = (y/3)*3;
     int bitn = ~(1<<n);
+    if(n<=0 || 10<=n){
+        QMessageBox errmsg;
+        errmsg.setStandardButtons(QMessageBox::Cancel);
+        errmsg.setIcon(QMessageBox::Critical);
+        errmsg.setWindowTitle("Fatal Error");
+        errmsg.setText("A fatal error occured. Click the cancel button to quit.");
+        errmsg.exec();
+        exit(1);
+    }
     for(i=0;i<9;i++){
         board[(yo+i/3)*9+xo+i%3] &= bitn;
         board[i*9+x] &= bitn;
@@ -67,7 +77,7 @@ void NPGenerator::eliminate(int* board, const int index, const int n){
 }
 
 int NPGenerator::check_board(int* board){//何も入らないマスが生じたなら0,チェックによって何も変わらなければ1,変われば2,全マス確定すれば3
-    int i,k,count,flag,dcount,n;
+    int i,k,count,flag,dcount,n=-1;
     do{
         flag=1;
         dcount = 0;
@@ -110,28 +120,9 @@ int NPGenerator::get_number(int* board, const int index){
             return k;
         }
     }
+    exit(1);
 }
 
-/*void NPGenerator::print_board(int* board){
-    int i,j;
-    for(i=0;i<9;i++){
-        for(j=0;j<9;j++){
-            printf("%d",get_number(board,j+9*i));
-            if(j==2||j==5){
-                printf("|");
-            }else if(j==8){
-                printf("\n");
-            }else{
-                printf(" ");
-            }
-        }
-        if(i==2||i==5){
-            printf("-----+-----+-----\n");
-        }
-    }
-    printf("\n");
-}
-*/
 bool NPGenerator::fill_answer(){
     int flag = check_board(answer),matindex,i,j,k,r,tmp;
     int randomorder[9];
@@ -252,6 +243,7 @@ bool NPGenerator::solve_min(int* board){
         }
         return false;
     }
+    return false;
 }
 
 bool NPGenerator::solve_max(int* board){
@@ -280,6 +272,7 @@ bool NPGenerator::solve_max(int* board){
         }
         return false;
     }
+    return false;
 }
 
 

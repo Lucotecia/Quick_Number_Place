@@ -1,4 +1,4 @@
-#ifndef DISPLAYBOARD_H
+﻿#ifndef DISPLAYBOARD_H
 #define DISPLAYBOARD_H
 #include "npgenerator.h"
 #include <QObject>

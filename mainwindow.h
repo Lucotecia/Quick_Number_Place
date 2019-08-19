@@ -2,7 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QThread>
 #include "cell.h"
+#include "displayboard.h"
+
 namespace Ui {
 class MainWindow;
 }
@@ -15,9 +18,11 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     bool eventFilter(QObject*,QEvent*);
+    bool eventKeyPress(QKeyEvent*);
 
 signals:
     void make_board(int);
+    void set_label_text(QString);
 
 public slots:
     void view_problem(QString,QString);
@@ -33,6 +38,12 @@ private:
     Cell* selected_cell = nullptr;
     int hint = 0;
     QString correct_answer;
+    DisplayBoard *db;
+    QThread *th;
+
+    void select(Cell*);
+    Cell* find_cell(QString);
+
 };
 
 #endif // MAINWINDOW_H

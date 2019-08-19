@@ -24,7 +24,7 @@ void Cell::mark(bool flag, QString color_name){
     }
 }
 
-void Cell::select(bool flag){
+void Cell::mark_frame(bool flag){
     if(flag){
         ui->cellframe->setStyleSheet("border:5px solid blue");
     }else{
