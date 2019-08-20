@@ -20,10 +20,11 @@ public:
     void setText(QString);
     void fix(bool);
     QString getText();
-
+    bool isfixed();
+    void set_font_color(QString);
 private:
     Ui::Cell *ui;
-    bool isfixed = false;
+    bool fix_flag = true;
 };
 
 #endif // CELL_H

@@ -37,14 +37,17 @@ void Cell::setText(QString s){
 }
 
 void Cell::fix(bool flag){//true:固定・黒文字, false:入力可能・青文字
-    if(flag){
-        ui->label->setStyleSheet("color:black");
-    }else{
-        ui->label->setStyleSheet("color:blue");
-    }
-    isfixed = flag;
+    fix_flag = flag;
+}
+
+void Cell::set_font_color(QString color){
+    ui->label->setStyleSheet("color:"+color);
 }
 
 QString Cell::getText(){
     return ui->label->text();
+}
+
+bool Cell::isfixed(){
+    return fix_flag;
 }

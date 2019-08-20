@@ -30,6 +30,8 @@ public slots:
 private slots:
     void on_pushButton_clicked();
 
+    void on_pushButton_2_clicked();
+
 private:
     Ui::MainWindow *ui;
     //QObject **cell_array;
@@ -40,7 +42,6 @@ private:
     QString correct_answer;
     DisplayBoard *db;
     QThread *th;
-
     void select(Cell*);
     Cell* find_cell(QString);
 
