@@ -19,8 +19,19 @@ MainWindow::MainWindow(QWidget *parent) :
     th = new QThread();
     db->moveToThread(th);
     th->start();
-    QObject::connect(this,SIGNAL(make_board(int)),db,SLOT(make_board(int)));//問題作成シグナルをmainwindowからdisplayboardへ
-    QObject::connect(db,SIGNAL(send_board(QString,QString)),this,SLOT(view_problem(QString, QString)));//生成された問題をmainwindowへ
+    connect(this,SIGNAL(make_board(int)),db,SLOT(make_board(int)));//問題作成シグナルをmainwindowからdisplayboardへ
+    connect(db,SIGNAL(send_board(QString,QString)),this,SLOT(view_problem(QString, QString)));//生成された問題をmainwindowへ
+    timer = new QTimer(this);
+    time_format = new QTime(0,0,0);
+    ui->lcdNumber->display(time_format->toString("hh:mm:ss"));
+    connect(timer, SIGNAL(timeout()), this, SLOT(showTime()));
+
+    connect(ui->assist_checkbox,SIGNAL(stateChanged(int)),this,SLOT(repaint_cell()));
+
+    //コンボボックスにfocusをあてるとキーボード入力ができるようになる
+    connect(ui->assist_checkbox,SIGNAL(stateChanged(int)),ui->hint_combobox,SLOT(setFocus()));
+    connect(ui->pushButton,SIGNAL(clicked(bool)),ui->hint_combobox,SLOT(setFocus()));
+    connect(ui->pushButton_2,SIGNAL(clicked(bool)),ui->hint_combobox,SLOT(setFocus()));
 }
 
 MainWindow::~MainWindow()
@@ -28,15 +39,30 @@ MainWindow::~MainWindow()
     delete ui;
     th->exit();
     th->wait();
+    delete timer;
+    delete time_format;
 }
 
 bool MainWindow::eventKeyPress(QKeyEvent *event)
 {
-//    if (event->isAutoRepeat()) {
-//        return true;
-//    }
     auto key = event->key();
     QString target_name = "cell";
+    if(key == Qt::Key_Space){
+        select(ui->cell55);
+        return true;
+    }
+    if(key == Qt::Key_Shift){
+        if(memo_mode){
+            memo_mode = false;
+            if(ui->label->text()=="memo mode"){
+                ui->label->setText("");
+            }
+        }else{
+            memo_mode = true;
+            ui->label->setText("memo mode");
+        }
+        return true;
+    }
     if(selected_cell!=nullptr){
         int block_number = selected_cell->objectName().at(4).digitValue()-1;//0-based
         int subidx = selected_cell->objectName().at(5).digitValue()-1;//0-based
@@ -82,45 +108,91 @@ bool MainWindow::eventKeyPress(QKeyEvent *event)
             return true;
         }
         if(!(selected_cell->isfixed())){
+            if(selected_cell->getText() == "" && memo_mode){
+                switch (key) {
+                case Qt::Key_0:
+                    selected_cell->set_memo(0);
+                    return true;
+                case Qt::Key_1:
+                    selected_cell->set_memo(1);
+                    return true;
+                case Qt::Key_2:
+                    selected_cell->set_memo(2);
+                    return true;
+                case Qt::Key_3:
+                    selected_cell->set_memo(3);
+                    return true;
+                case Qt::Key_4:
+                    selected_cell->set_memo(4);
+                    return true;
+                case Qt::Key_5:
+                    selected_cell->set_memo(5);
+                    return true;
+                case Qt::Key_6:
+                    selected_cell->set_memo(6);
+                    return true;
+                case Qt::Key_7:
+                    selected_cell->set_memo(7);
+                    return true;
+                case Qt::Key_8:
+                    selected_cell->set_memo(8);
+                    return true;
+                case Qt::Key_9:
+                    selected_cell->set_memo(9);
+                    return true;
+                default:
+                    break;
+                }
+            }
             switch(key){
             case Qt::Key_0:
             case Qt::Key_Backspace:
+                selected_cell->set_memo(0);
                 selected_cell->setText("");
                 select(selected_cell);
                 return true;
             case Qt::Key_1:
+                selected_cell->set_memo(0);
                 selected_cell->setText("1");
                 select(selected_cell);
                 return true;
             case Qt::Key_2:
+                selected_cell->set_memo(0);
                 selected_cell->setText("2");
                 select(selected_cell);
                 return true;
             case Qt::Key_3:
+                selected_cell->set_memo(0);
                 selected_cell->setText("3");
                 select(selected_cell);
                 return true;
             case Qt::Key_4:
+                selected_cell->set_memo(0);
                 selected_cell->setText("4");
                 select(selected_cell);
                 return true;
             case Qt::Key_5:
+                selected_cell->set_memo(0);
                 selected_cell->setText("5");
                 select(selected_cell);
                 return true;
             case Qt::Key_6:
+                selected_cell->set_memo(0);
                 selected_cell->setText("6");
                 select(selected_cell);
                 return true;
             case Qt::Key_7:
+                selected_cell->set_memo(0);
                 selected_cell->setText("7");
                 select(selected_cell);
                 return true;
             case Qt::Key_8:
+                selected_cell->set_memo(0);
                 selected_cell->setText("8");
                 select(selected_cell);
                 return true;
             case Qt::Key_9:
+                selected_cell->set_memo(0);
                 selected_cell->setText("9");
                 select(selected_cell);
                 return true;
@@ -155,9 +227,8 @@ void MainWindow::select(Cell* target){
     }
     if(selected_cell!=nullptr) selected_cell->mark_frame(false);//前回選択されたcellの枠の色を戻す
     target->mark_frame(true);//選択されたcellの枠を青に
-    //target->mark(true);//選択されたcellを水色に
-    if(assist){
-        //assistがtrueのとき、重複がないcellを全て水色に
+    if(ui->assist_checkbox->isChecked()){
+        //checkboxがcheckされているとき、重複がないcellを全て水色に
         QChar target_block = target->objectName().at(4);
         int target_subidx = target->objectName().at(5).digitValue()-1;//0-based
         int target_block_number = target_block.digitValue()-1;//0-based
@@ -198,9 +269,13 @@ void MainWindow::view_problem(QString problem, QString answer){
     }
     if(selected_cell!=nullptr) select(selected_cell);
     ui->label->setText("");
+    time_format->setHMS(0,0,0);
+    ui->lcdNumber->display(time_format->toString("hh:mm:ss"));
+    timer->start(1000);
 }
 
 void MainWindow::on_pushButton_clicked(){
+    timer->stop();
     hint = ui->hint_combobox->currentText().toInt();
     ui->label->setText("wait a minute...");
     ui->label->repaint();
@@ -216,9 +291,9 @@ Cell* MainWindow::find_cell(QString name){
     return nullptr;
 }
 
-void MainWindow::on_pushButton_2_clicked()
-{
+void MainWindow::on_pushButton_2_clicked(){
     bool flag =true;
+    timer->stop();
     for(int i=0;i<all_cells.length();i++){
         Cell *cell = all_cells.at(i);
         int block_number = cell->objectName().at(4).digitValue()-1; //0-based
@@ -231,6 +306,17 @@ void MainWindow::on_pushButton_2_clicked()
     if(flag){
         ui->label->setText("clear!");
     }else{
-        ui->label->setText("not correct!");
+        ui->label->setText("wrong!");
+    }
+}
+
+void MainWindow::showTime(){
+    *time_format = time_format->addSecs(1);
+    ui->lcdNumber->display(time_format->toString("hh:mm:ss"));
+}
+
+void MainWindow::repaint_cell(){
+    if(selected_cell != nullptr){
+        select(selected_cell);
     }
 }

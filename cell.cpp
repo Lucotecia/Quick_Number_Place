@@ -9,6 +9,7 @@ Cell::Cell(QWidget *parent) :
     ui(new Ui::Cell)
 {
     ui->setupUi(this);
+    labels = findChildren<QLabel*>();
 }
 
 Cell::~Cell()
@@ -50,4 +51,52 @@ QString Cell::getText(){
 
 bool Cell::isfixed(){
     return fix_flag;
+}
+
+void Cell::set_memo(int n){
+    if(n==0){
+        for(int i=0;i<labels.length();i++){
+            labels[i]->setText("");
+        }
+    }
+    switch(n){
+    case 1:
+        trigger_memo(ui->memo1, 1);
+        break;
+    case 2:
+        trigger_memo(ui->memo2, 2);
+        break;
+    case 3:
+        trigger_memo(ui->memo3, 3);
+        break;
+    case 4:
+        trigger_memo(ui->memo4, 4);
+        break;
+    case 5:
+        trigger_memo(ui->memo5, 5);
+        break;
+    case 6:
+        trigger_memo(ui->memo6, 6);
+        break;
+    case 7:
+        trigger_memo(ui->memo7, 7);
+        break;
+    case 8:
+        trigger_memo(ui->memo8, 8);
+        break;
+    case 9:
+        trigger_memo(ui->memo9, 9);
+        break;
+    default:
+        break;
+    }
+}
+
+void Cell::trigger_memo(QLabel *memo, int n){
+    if(memo->text()==""){
+        memo->setText(QString::number(n));
+        qDebug()<<n;
+    }else{
+        memo->setText("");
+    }
 }

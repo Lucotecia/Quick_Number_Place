@@ -170,6 +170,9 @@
         <bold>true</bold>
        </font>
       </property>
+      <property name="styleSheet">
+       <string notr="true">color:gray</string>
+      </property>
       <property name="text">
        <string/>
       </property>
@@ -205,6 +208,9 @@
         <bold>true</bold>
        </font>
       </property>
+      <property name="styleSheet">
+       <string notr="true">color:gray</string>
+      </property>
       <property name="text">
        <string/>
       </property>
@@ -239,6 +245,9 @@
         <weight>75</weight>
         <bold>true</bold>
        </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color:gray</string>
       </property>
       <property name="text">
        <string/>
@@ -278,6 +287,9 @@
         <bold>true</bold>
        </font>
       </property>
+      <property name="styleSheet">
+       <string notr="true">color:gray</string>
+      </property>
       <property name="text">
        <string/>
       </property>
@@ -315,6 +327,9 @@
         <weight>75</weight>
         <bold>true</bold>
        </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color:gray</string>
       </property>
       <property name="text">
        <string/>
@@ -354,6 +369,9 @@
         <bold>true</bold>
        </font>
       </property>
+      <property name="styleSheet">
+       <string notr="true">color:gray</string>
+      </property>
       <property name="text">
        <string/>
       </property>
@@ -388,6 +406,9 @@
         <weight>75</weight>
         <bold>true</bold>
        </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color:gray</string>
       </property>
       <property name="text">
        <string/>
@@ -424,6 +445,9 @@
         <bold>true</bold>
        </font>
       </property>
+      <property name="styleSheet">
+       <string notr="true">color:gray</string>
+      </property>
       <property name="text">
        <string/>
       </property>
@@ -458,6 +482,9 @@
         <weight>75</weight>
         <bold>true</bold>
        </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color:gray</string>
       </property>
       <property name="text">
        <string/>

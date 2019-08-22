@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include <QThread>
+#include <QTimer>
+#include <QTime>
 #include "cell.h"
 #include "displayboard.h"
 
@@ -29,8 +31,9 @@ public slots:
 
 private slots:
     void on_pushButton_clicked();
-
     void on_pushButton_2_clicked();
+    void showTime();
+    void repaint_cell();
 
 private:
     Ui::MainWindow *ui;
@@ -44,7 +47,9 @@ private:
     QThread *th;
     void select(Cell*);
     Cell* find_cell(QString);
-
+    QTimer *timer;
+    QTime *time_format;
+    bool memo_mode = false;
 };
 
 #endif // MAINWINDOW_H
