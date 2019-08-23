@@ -25,17 +25,23 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+        boardstate.cpp \
         cell.cpp \
+        cellstate.cpp \
         displayboard.cpp \
         main.cpp \
         mainwindow.cpp \
-        npgenerator.cpp
+        npgenerator.cpp \
+        undocontroller.cpp
 
 HEADERS += \
+        boardstate.h \
         cell.h \
+        cellstate.h \
         displayboard.h \
         mainwindow.h \
-        npgenerator.h
+        npgenerator.h \
+        undocontroller.h
 
 FORMS += \
         cell.ui \
