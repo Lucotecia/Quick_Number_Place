@@ -4,11 +4,11 @@ This is a simple number place application.
 ## Description
 This app generates number place problems quickly by randomized algorithm when you click the generate-button.
 In addition, following features helps your enjoying solvinig the problems.
-auto-assist(on/off):If you like, the area that selected cell influences can be shown.
-* __timer__ :              It measure time from the problem generated and show it in the window.
-* __undo/redo__ :          Unlimited-undo is available. You can repeat undoing your mistakes as much as you want!
-* __memo__ :               You can take memos (can contain multiple numbers) in the grid.
-* __hint__ :               You can select the number of the hints(25~35).
+* __auto-assist(on/off)__ : If you like, the area that selected cell influences can be shown.
+* __timer__ :               It measure time from the problem generated and show it in the window.
+* __undo/redo__ :           Unlimited-undo is available. You can repeat undoing your mistakes as much as you want!
+* __memo__ :                You can take memos (can contain multiple numbers) in the grid.
+* __hint__ :                You can select the number of the hints(25~35).
 
 ## Demo (in progress)
 
