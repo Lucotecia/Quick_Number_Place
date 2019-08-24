@@ -24,7 +24,7 @@ Please see the README.txt file before run the app.
 If you want to build one from the sources, use Qt v5.12.4 or later versions.
 
 ## Licence
-[LGPLv3](https://github.com/Lucotecia/Quick_Number_Place/blob/master/LICENCE)
+[LGPLv3](https://github.com/Lucotecia/Quick_Number_Place/blob/master/LICENSE)
 
 ## Author
 Lucotecia(
