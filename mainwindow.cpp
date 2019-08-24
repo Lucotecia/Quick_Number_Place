@@ -1,5 +1,7 @@
 ﻿#include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QMessageBox>
+#include <QStyle>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -14,12 +16,14 @@ MainWindow::MainWindow(QWidget *parent) :
     }
     ui->hint_combobox->installEventFilter(this);
     installEventFilter(parent);
-    db = new DisplayBoard();
-    th = new QThread();
-    db->moveToThread(th);
-    th->start();
-    connect(this,SIGNAL(make_board(int)),db,SLOT(make_board(int)));//問題作成シグナルをmainwindowからdisplayboardへ
-    connect(db,SIGNAL(send_board(QString,QString)),this,SLOT(show_problem(QString, QString)));//生成された問題をmainwindowへ
+
+//    db = new DisplayBoard();
+//    th = new QThread();
+//    db->moveToThread(th);
+//    th->start();
+//    connect(this,SIGNAL(make_board(int)),db,SLOT(make_board(int)));//問題作成シグナルをmainwindowからdisplayboardへ
+//    connect(db,SIGNAL(send_board(QString,QString)),this,SLOT(show_problem(QString, QString)));//生成された問題をmainwindowへ
+
     timer = new QTimer(this);
     time_format = new QTime(0,0,0);
     ui->lcdNumber->display(time_format->toString("hh:mm:ss"));
@@ -35,18 +39,23 @@ MainWindow::MainWindow(QWidget *parent) :
     udc = new UndoController;
     ui->actionUndo->setEnabled(false);
     ui->actionRedo->setEnabled(false);
-    //リンクエラーによりundo周りでsignal/slotを使わないコードに書き換え
-//    QObject::connect(this,SIGNAL(changed(BoardState*)),udc,SLOT(changed(BoardState*)));
-//    QObject::connect(this,SIGNAL(clear_history()),udc,SLOT(clear()));
-//    QObject::connect(this,SIGNAL(set_history_now(BoardState*)),udc,SLOT(set_now(BoardState*)));
-//    QObject::connect(udc,SIGNAL(send_state(BoardState*)),this,SLOT(show_state(BoardState*)));
+
+    connect(this, SIGNAL(changed(BoardState*)), udc, SLOT(changed(BoardState*)));
+    connect(this, SIGNAL(clear_history()), udc,SLOT(clear()));
+    connect(this, SIGNAL(set_history_now(BoardState*)), udc, SLOT(set_now(BoardState*)));
+    connect(this, SIGNAL(undo()), udc, SLOT(undo()));
+    connect(this, SIGNAL(redo()), udc, SLOT(redo()));
+    connect(udc, SIGNAL(send_state(BoardState*)), this, SLOT(show_state(BoardState*)));
+    connect(udc, SIGNAL(set_enabled_undo(bool)), this, SLOT(set_enabled_undo(bool)));
+    connect(udc, SIGNAL(set_enabled_redo(bool)), this, SLOT(set_enabled_redo(bool)));
+    emit set_history_now(get_state());
+
+    ui->actionAbout_Qt->setIcon(QApplication::style()->standardIcon(QStyle::SP_TitleBarMenuButton));
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
-    th->exit();
-    th->wait();
     delete timer;
     delete time_format;
 }
@@ -137,64 +146,45 @@ bool MainWindow::eventKeyPress(QKeyEvent *event)
             if(selected_cell->getText() == "" && memo_mode){//空白かつメモモードのとき
                 switch (key) {
                 case Qt::Key_0:
+                case Qt::Key_Backspace:
                     selected_cell->set_memo(0);
-                    udc->changed(get_state());
-                    ui->actionUndo->setEnabled(true);
-                    ui->actionRedo->setEnabled(false);
+                    emit changed(get_state());
                     return true;
                 case Qt::Key_1:
                     selected_cell->set_memo(1);
-                    udc->changed(get_state());
-                    ui->actionUndo->setEnabled(true);
-                    ui->actionRedo->setEnabled(false);
+                    emit changed(get_state());
                     return true;
                 case Qt::Key_2:
                     selected_cell->set_memo(2);
-                    udc->changed(get_state());
-                    ui->actionUndo->setEnabled(true);
-                    ui->actionRedo->setEnabled(false);
+                    emit changed(get_state());
                     return true;
                 case Qt::Key_3:
                     selected_cell->set_memo(3);
-                    udc->changed(get_state());
-                    ui->actionUndo->setEnabled(true);
-                    ui->actionRedo->setEnabled(false);
+                    emit changed(get_state());
                     return true;
                 case Qt::Key_4:
                     selected_cell->set_memo(4);
-                    udc->changed(get_state());
-                    ui->actionUndo->setEnabled(true);
-                    ui->actionRedo->setEnabled(false);
+                    emit changed(get_state());
                     return true;
                 case Qt::Key_5:
                     selected_cell->set_memo(5);
-                    udc->changed(get_state());
-                    ui->actionUndo->setEnabled(true);
-                    ui->actionRedo->setEnabled(false);
+                    emit changed(get_state());
                     return true;
                 case Qt::Key_6:
                     selected_cell->set_memo(6);
-                    udc->changed(get_state());
-                    ui->actionUndo->setEnabled(true);
-                    ui->actionRedo->setEnabled(false);
+                    emit changed(get_state());
                     return true;
                 case Qt::Key_7:
                     selected_cell->set_memo(7);
-                    udc->changed(get_state());
-                    ui->actionUndo->setEnabled(true);
-                    ui->actionRedo->setEnabled(false);
+                    emit changed(get_state());
                     return true;
                 case Qt::Key_8:
                     selected_cell->set_memo(8);
-                    udc->changed(get_state());
-                    ui->actionUndo->setEnabled(true);
-                    ui->actionRedo->setEnabled(false);
+                    emit changed(get_state());
                     return true;
                 case Qt::Key_9:
                     selected_cell->set_memo(9);
-                    udc->changed(get_state());
-                    ui->actionUndo->setEnabled(true);
-                    ui->actionRedo->setEnabled(false);
+                    emit changed(get_state());
                     return true;
                 default:
                     break;
@@ -206,81 +196,61 @@ bool MainWindow::eventKeyPress(QKeyEvent *event)
                     selected_cell->set_memo(0);
                     selected_cell->setText("");
                     select(selected_cell);
-                    udc->changed(get_state());
-                    ui->actionUndo->setEnabled(true);
-                    ui->actionRedo->setEnabled(false);
+                    emit changed(get_state());
                     return true;
                 case Qt::Key_1:
                     selected_cell->set_memo(0);
                     selected_cell->setText("1");
                     select(selected_cell);
-                    udc->changed(get_state());
-                    ui->actionUndo->setEnabled(true);
-                    ui->actionRedo->setEnabled(false);
+                    emit changed(get_state());
                     return true;
                 case Qt::Key_2:
                     selected_cell->set_memo(0);
                     selected_cell->setText("2");
                     select(selected_cell);
-                    udc->changed(get_state());
-                    ui->actionUndo->setEnabled(true);
-                    ui->actionRedo->setEnabled(false);
+                    emit changed(get_state());
                     return true;
                 case Qt::Key_3:
                     selected_cell->set_memo(0);
                     selected_cell->setText("3");
                     select(selected_cell);
-                    udc->changed(get_state());
-                    ui->actionUndo->setEnabled(true);
-                    ui->actionRedo->setEnabled(false);
+                    emit changed(get_state());
                     return true;
                 case Qt::Key_4:
                     selected_cell->set_memo(0);
                     selected_cell->setText("4");
                     select(selected_cell);
-                    udc->changed(get_state());
-                    ui->actionUndo->setEnabled(true);
-                    ui->actionRedo->setEnabled(false);
+                    emit changed(get_state());
                     return true;
                case Qt::Key_5:
                     selected_cell->set_memo(0);
                     selected_cell->setText("5");
                     select(selected_cell);
-                    udc->changed(get_state());
-                    ui->actionUndo->setEnabled(true);
-                    ui->actionRedo->setEnabled(false);
+                    emit changed(get_state());
                     return true;
                 case Qt::Key_6:
                     selected_cell->set_memo(0);
                     selected_cell->setText("6");
                     select(selected_cell);
-                    udc->changed(get_state());
-                    ui->actionUndo->setEnabled(true);
-                    ui->actionRedo->setEnabled(false);
+                    emit changed(get_state());
                     return true;
                 case Qt::Key_7:
                     selected_cell->set_memo(0);
                     selected_cell->setText("7");
                     select(selected_cell);
-                    udc->changed(get_state());
-                    ui->actionUndo->setEnabled(true);
-                    ui->actionRedo->setEnabled(false);
+                    emit changed(get_state());
                     return true;
                 case Qt::Key_8:
                     selected_cell->set_memo(0);
                     selected_cell->setText("8");
                     select(selected_cell);
-                    udc->changed(get_state());
-                    ui->actionUndo->setEnabled(true);
-                    ui->actionRedo->setEnabled(false);
+                    emit changed(get_state());
                     return true;
                 case Qt::Key_9:
                     selected_cell->set_memo(0);
                     selected_cell->setText("9");
                     select(selected_cell);
-                    udc->changed(get_state());
-                    ui->actionUndo->setEnabled(true);
-                    ui->actionRedo->setEnabled(false);
+                    emit changed(get_state());
                     return true;
                 default:
                     return false;
@@ -315,7 +285,7 @@ void MainWindow::select(Cell* target){
     if(selected_cell!=nullptr) selected_cell->mark_frame(false);//前回選択されたcellの枠の色を戻す
     target->mark_frame(true);//選択されたcellの枠を青に
     if(ui->assist_checkbox->isChecked()){
-        //checkboxがcheckされているとき、重複がないcellを全て水色に
+        //checkboxがcheckされているとき、重複がないcellを全て薄緑色に
         QChar target_block = target->objectName().at(4);
         int target_subidx = target->objectName().at(5).digitValue()-1;//0-based
         int target_block_number = target_block.digitValue()-1;//0-based
@@ -367,7 +337,7 @@ void MainWindow::show_problem(QString problem, QString answer){
     }else{
         ui->label->setText("");
     }
-    udc->set_history_now(get_state());//現在の状態をundoスタックにpush
+    emit set_history_now(get_state());//現在の状態をundoスタックにpush
     time_format->setHMS(0,0,0);
     ui->lcdNumber->display(time_format->toString("hh:mm:ss"));
     timer->start(1000);
@@ -379,9 +349,7 @@ void MainWindow::on_pushButton_clicked(){//問題生成ボタン
     ui->label->setText("wait a minute...");
     ui->label->repaint();
     emit make_board(hint);
-    udc->clear();
-    ui->actionUndo->setEnabled(false);
-    ui->actionRedo->setEnabled(false);
+    emit clear_history();
 }
 
 Cell* MainWindow::find_cell(QString name){
@@ -411,7 +379,7 @@ void MainWindow::on_pushButton_2_clicked(){//答え合わせボタン
     }else{
         ui->label->setText("wrong!");
     }
-    udc->clear();//undoを無効化
+    emit clear_history();//undoを無効化
 }
 
 void MainWindow::showTime(){
@@ -454,26 +422,12 @@ void MainWindow::show_state(BoardState* bs){//BoardStateやCellStateをdeleteし
 
 void MainWindow::on_actionUndo_triggered()
 {
-    BoardState* tmp = udc->undo();
-    if(tmp!=nullptr){
-        show_state(tmp);
-        ui->actionRedo->setEnabled(true);
-        if(udc->is_empty_undo()){
-            ui->actionUndo->setEnabled(false);
-        }
-    }
+    emit undo();
 }
 
 void MainWindow::on_actionRedo_triggered()
 {
-    BoardState* tmp = udc->redo();
-    if(tmp!=nullptr){
-        show_state(tmp);
-        ui->actionUndo->setEnabled(true);
-        if(udc->is_empty_redo()){
-            ui->actionRedo->setEnabled(false);
-        }
-    }
+    emit redo();
 }
 
 void MainWindow::on_actionMemo_triggered()
@@ -487,4 +441,26 @@ void MainWindow::on_actionMemo_triggered()
         memo_mode = true;
         ui->label->setText("memo mode");
     }
+}
+
+void MainWindow::set_enabled_undo(bool flag){
+    ui->actionUndo->setEnabled(flag);
+}
+
+void MainWindow::set_enabled_redo(bool flag){
+    ui->actionRedo->setEnabled(flag);
+}
+
+void MainWindow::on_actionAbout_Quick_Number_Place_triggered()
+{
+    QString text =  "<span style=\"font-weight:bold\">Version</span> : for Windows v0.x (24 August 2019)<br>"       //v1.0以降反映
+                    "<span style=\"font-weight:bold\">Author</span>  : Lucotecia(<a href=\"https://github.com/Lucotecia\">GitHub</a>, <a href=\"https://twitter.com/lucotecia\">Twitter</a>)<br>"
+                    "   for more infomation, please refer to the \"README.txt\" file.";
+
+    QMessageBox::about(this, "About this App", text);
+}
+
+void MainWindow::on_actionAbout_Qt_triggered()
+{
+    QMessageBox::aboutQt(this, "About Qt");
 }

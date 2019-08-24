@@ -3,11 +3,11 @@
 #include "cell.h"
 #include <QObject>
 
-class CellState
+class CellState:public QObject
 {
-
+    Q_OBJECT
 public:
-    CellState(Cell*);
+    CellState(Cell*,QObject *parent=nullptr);
     ~CellState();
 
     bool isfixed();

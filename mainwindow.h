@@ -29,10 +29,17 @@ public:
 signals:
     void make_board(int);
     void set_label_text(QString);
+    void clear_history();
+    void changed(BoardState*);
+    void set_history_now(BoardState*);
+    void undo();
+    void redo();
 
 public slots:
     void show_problem(QString,QString);
     void show_state(BoardState*);
+    void set_enabled_undo(bool);
+    void set_enabled_redo(bool);
 
 private slots:
     void on_pushButton_clicked();
@@ -46,6 +53,10 @@ private slots:
 
     void on_actionMemo_triggered();
 
+    void on_actionAbout_Quick_Number_Place_triggered();
+
+    void on_actionAbout_Qt_triggered();
+
 private:
     Ui::MainWindow *ui;
     //QObject **cell_array;
@@ -54,8 +65,8 @@ private:
     Cell* selected_cell = nullptr;
     int hint = 0;
     QString correct_answer;
-    DisplayBoard *db;
-    QThread *th;
+    //DisplayBoard *db;
+    //QThread *th;
     void select(Cell*);
     Cell* find_cell(QString);
     QTimer *timer;

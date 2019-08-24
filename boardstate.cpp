@@ -1,10 +1,13 @@
 #include "boardstate.h"
 
+BoardState::BoardState(QObject *parent):QObject(parent)
+{}
+
 BoardState::~BoardState(){
-    int size = state.size();
-    while(size>0){
-        delete state.at(size-1);
-        size--;
+    int i = state.size();
+    while(i>0){
+        i--;
+        delete state.at(i);
     }
 }
 

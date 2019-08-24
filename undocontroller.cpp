@@ -1,31 +1,36 @@
 #include "undocontroller.h"
 
-UndoController::UndoController(){
+UndoController::UndoController(QObject *parent):QObject(parent)
+{
     now =nullptr;
 }
 
-BoardState* UndoController::undo(){
-    if(undo_stack.isEmpty()){
-        return nullptr;
+void UndoController::undo(){
+    if(!undo_stack.isEmpty()){
+        redo_stack.push(now);
+        now = undo_stack.pop();
+        emit send_state(now);
     }
-    redo_stack.push(now);
-    now = undo_stack.pop();
-    return now;
+    if(undo_stack.isEmpty()) emit set_enabled_undo(false);
+    emit set_enabled_redo(true);
 }
 
-BoardState* UndoController::redo(){
-    if(redo_stack.isEmpty()){
-        return nullptr;
+void UndoController::redo(){
+    if(!redo_stack.isEmpty()){
+        undo_stack.push(now);
+        now = redo_stack.pop();
+        emit send_state(now);
     }
-    undo_stack.push(now);
-    now = redo_stack.pop();
-    return now;
+    if(redo_stack.isEmpty()) emit set_enabled_redo(false);
+    emit set_enabled_undo(true);
 }
 
 void UndoController::changed(BoardState* bs){
     undo_stack.push(now);
     now = bs;
     clear_redo_stack();
+    emit set_enabled_undo(true);
+    emit set_enabled_redo(false);
 }
 
 void UndoController::clear(){
@@ -33,9 +38,11 @@ void UndoController::clear(){
     clear_redo_stack();
     delete now;
     now = nullptr;
+    emit set_enabled_undo(false);
+    emit set_enabled_redo(false);
 }
 
-void UndoController::set_history_now(BoardState* new_board){
+void UndoController::set_now(BoardState* new_board){
     now = new_board;
 }
 
@@ -51,10 +58,3 @@ void UndoController::clear_redo_stack(){
     }
 }
 
-bool UndoController::is_empty_undo(){
-    return undo_stack.isEmpty();
-}
-
-bool UndoController::is_empty_redo(){
-    return redo_stack.isEmpty();
-}

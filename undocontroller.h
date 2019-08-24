@@ -5,17 +5,23 @@
 #include "boardstate.h"
 
 
-class UndoController
+class UndoController:public QObject
 {
+    Q_OBJECT
 public:
-    UndoController();
-    BoardState* undo();
-    BoardState* redo();
-    void changed(BoardState*);
+    UndoController(QObject *parent=nullptr);
+
+signals:
+    void send_state(BoardState*);
+    void set_enabled_undo(bool);
+    void set_enabled_redo(bool);
+
+public slots:
     void clear();
-    void set_history_now(BoardState*);
-    bool is_empty_undo();
-    bool is_empty_redo();
+    void changed(BoardState*);
+    void set_now(BoardState*);
+    void undo();
+    void redo();
 
 private:
     void clear_undo_stack();

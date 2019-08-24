@@ -13,6 +13,7 @@ public:
 
 signals:
     void send_board(QString,QString);
+
 public slots:
     void make_board(int);
 

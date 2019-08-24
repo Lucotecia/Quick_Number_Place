@@ -3,9 +3,11 @@
 #include <QObject>
 #include "cellstate.h"
 #include <QVector>
-class BoardState
+class BoardState:public QObject
 {
+    Q_OBJECT
 public:
+    BoardState(QObject *parent=nullptr);
     ~BoardState();
 
     void push_back(CellState*);

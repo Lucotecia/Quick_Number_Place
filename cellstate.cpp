@@ -1,6 +1,7 @@
 #include "cellstate.h"
 
-CellState::CellState(Cell*cell){
+CellState::CellState(Cell*cell,QObject *parent):QObject(parent)
+{
     memos = new bool[9];
     number = cell->getText();
     fix_flag = cell->isfixed();
