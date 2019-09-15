@@ -453,7 +453,7 @@ void MainWindow::set_enabled_redo(bool flag){
 
 void MainWindow::on_actionAbout_Quick_Number_Place_triggered()
 {
-    QString text =  "<span style=\"font-weight:bold\">Version</span> : for Windows v0.x (24 August 2019)<br>"       //v1.0以降反映
+    QString text =  "<span style=\"font-weight:bold\">Version</span> : for Windows v1.1 (15 September 2019)<br>"       //v1.0以降反映
                     "<span style=\"font-weight:bold\">Author</span>  : Lucotecia(<a href=\"https://github.com/Lucotecia\">GitHub</a>, <a href=\"https://twitter.com/lucotecia\">Twitter</a>)<br>"
                     "   for more infomation, please refer to the \"README.txt\" file.";
 
