@@ -10,7 +10,8 @@ In addition, following features helps your enjoying solvinig the problems.
 * __memo__ :                You can take memos (can contain multiple numbers) in the grid.
 * __hint__ :                You can select the number of the hints(25~35).
 
-## Demo (in progress)
+## Demo
+  <a href="https://video.twimg.com/tweet_video/ECwF9R7UYAIc6Xc.mp4">https://video.twimg.com/tweet_video/ECwF9R7UYAIc6Xc.mp4</a>
 
 ## Requirement
 Now, this app is only for Windows.
@@ -24,7 +25,7 @@ Please see the README.txt file before run the app.
 If you want to build one from the sources, use Qt v5.12.4 or later versions.
 
 ## Licence
-[LGPLv3](https://github.com/Lucotecia/Quick_Number_Place/blob/master/LICENCE)
+[LGPLv3](https://github.com/Lucotecia/Quick_Number_Place/blob/master/LICENSE)
 
 ## Author
 Lucotecia(
